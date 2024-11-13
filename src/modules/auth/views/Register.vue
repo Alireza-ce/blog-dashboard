@@ -5,17 +5,28 @@ import AuthLayout from "../layout/AuthLayout.vue";
 const formData = reactive({
   email: "",
   password: "",
+  user: "",
 });
 
 function onSubmit() {
   // Handle register logic
-  console.log("Register with:", formData.email, formData.password);
+  console.log("Register with:", formData);
 }
 </script>
 
 <template>
-  <AuthLayout title="Login" button-label="Login" :onSubmit="onSubmit">
+  <AuthLayout title="Register" button-label="Register" :onSubmit="onSubmit">
     <template #forms>
+      <div class="form-group">
+        <label for="userField">User</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userField"
+          v-model="formData.user"
+          required
+        />
+      </div>
       <div class="form-group">
         <label for="emailField">Email</label>
         <input
@@ -37,7 +48,7 @@ function onSubmit() {
         />
       </div>
     </template>
-    <template #footer> Don’t have account? Register Now </template>
+    <template #footer> Already Registered? Login </template>
   </AuthLayout>
 </template>
 

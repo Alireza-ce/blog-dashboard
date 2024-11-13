@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-defineProps({
-  title: String,
-  buttonLabel: String,
-});
+defineProps<{
+  title: string;
+  buttonLabel: string;
+  onSubmit: () => void;
+}>();
 </script>
 
 <template>
   <div class="auth-layout-container">
     <div class="auth-form">
       <h2>{{ title }}</h2>
-      <slot name="forms"></slot>
-      <button type="button" class="btn btn-primary submit-button">
-        {{ buttonLabel }}
-      </button>
-      <slot name="footer"></slot>
+      <form @submit.prevent="onSubmit">
+        <slot name="forms"></slot>
+        <button type="submit" class="btn btn-primary submit-button">
+          {{ buttonLabel }}
+        </button>
+      </form>
+      <div class="footer">
+        <slot name="footer"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -47,5 +52,9 @@ defineProps({
 
 .submit-button {
   width: 100%;
+}
+
+.footer {
+  margin-top: 12px;
 }
 </style>
