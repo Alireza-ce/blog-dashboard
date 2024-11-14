@@ -1,10 +1,10 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import "./reset.css";
-import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
+import "./reset.css";
+import "./style.css";
 
 const app = createApp(App);
 

@@ -1,7 +1,13 @@
 :root {
+  /* colors */
   --silver: #eceeef;
   --warm-grey:#707070;
+  --charcoal-grey: #373a3c;
+  --white: #ffffff;
+  --water-blue: #1c7cd5;
+  /* font-size */
   --title-font-size: 47px;
+
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
