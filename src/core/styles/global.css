@@ -5,6 +5,7 @@
   --charcoal-grey: #373a3c;
   --white: #ffffff;
   --water-blue: #1c7cd5;
+  --red: #cb2e25;
   /* font-size */
   --title-font-size: 47px;
 
@@ -17,3 +18,4 @@
   padding: 0;
   box-sizing: border-box;
 }
+

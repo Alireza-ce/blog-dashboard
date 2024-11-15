@@ -11,12 +11,17 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@formkit/themes": "^1.6.8",
+    "@formkit/utils": "^1.6.8",
+    "@formkit/vue": "^1.6.8",
+    "@tanstack/vue-query": "^5.59.20",
     "axios": "^1.7.7",
     "bootstrap": "4",
     "jquery": "^3.7.1",
     "popper.js": "^1.16.1",
     "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue3-snackbar": "^2.3.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",

@@ -1,41 +1,38 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import AuthLayout from "../layout/AuthLayout.vue";
+import { LocalStorageKeys } from "../../../core/constants/auth";
+import { AuthForm } from "../models/forms.model";
+import { useLogin } from "../services";
+import { useNotication } from "../../../core/services/snackbar";
+import { useRouter } from "vue-router";
 
-const formData = reactive({
-  email: "",
-  password: "",
-});
+const loginMutate = useLogin();
+const router = useRouter();
+const { onSuccessNotification, onErrorNotification } = useNotication();
 
-function onSubmit() {
-  // Handle register logic
-  console.log("Register with:", formData.email, formData.password);
+async function onSubmit(data: AuthForm) {
+  try {
+    const res = await loginMutate.mutateAsync({ user: data });
+    localStorage.setItem(LocalStorageKeys.TOKEN, res.data?.user?.token);
+    onSuccessNotification("Welcome");
+    router.push("/articles");
+  } catch (e) {
+    onErrorNotification("Email or Password is Incorrect");
+    console.warn("register warn:", e);
+  }
 }
 </script>
 
 <template>
-  <AuthLayout title="Login" button-label="Login" :onSubmit="onSubmit">
+  <AuthLayout title="Login" button-label="Login" :onSubmit="onSubmit" :is-loading="loginMutate.isPending.value">
     <template #forms>
-      <div class="form-group">
-        <label for="emailField">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="emailField"
-          v-model="formData.email"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="passwordField">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="passwordField"
-          v-model="formData.password"
-          required
-        />
-      </div>
+      <FormKit name="email" label="Email" validation="required|email" />
+      <FormKit
+        name="password"
+        type="password"
+        label="Password"
+        validation="required|length:6"
+      />
     </template>
     <template #footer> Don’t have account? Register Now </template>
   </AuthLayout>
