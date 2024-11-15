@@ -20,7 +20,8 @@
     "jquery": "^3.7.1",
     "popper.js": "^1.16.1",
     "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue3-snackbar": "^2.3.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
