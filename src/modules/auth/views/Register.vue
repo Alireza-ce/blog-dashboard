@@ -25,7 +25,7 @@ async function onSubmit(data: RegisterForm) {
 </script>
 
 <template>
-  <AuthLayout title="Register" button-label="Register" :onSubmit="onSubmit">
+  <AuthLayout title="Register" button-label="Register" :is-loading="registerMutate.isPending.value" :onSubmit="onSubmit">
     <template #forms>
       <FormKit name="username" label="User" validation="required" />
       <FormKit name="email" label="Email" validation="required|email" />

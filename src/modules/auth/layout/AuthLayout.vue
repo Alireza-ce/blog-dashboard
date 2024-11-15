@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
+import BaseButton from "../../../core/components/BaseButton.vue";
 
 defineProps<{
   title: string;
   buttonLabel: string;
   onSubmit: (data: any) => void;
+  isLoading: boolean
 }>();
 </script>
 
@@ -14,9 +16,7 @@ defineProps<{
       <h2>{{ title }}</h2>
       <FormKit type="form" @submit="onSubmit" :actions="false">
         <slot name="forms"></slot>
-        <button type="submit" class="btn btn-primary submit-button">
-          {{ buttonLabel }}
-        </button>
+        <BaseButton :is-loading="isLoading" :label="buttonLabel" :onClick="onSubmit" type="submit"  />
       </FormKit>
       <div class="footer">
         <slot name="footer"></slot>
