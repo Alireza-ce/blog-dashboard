@@ -11,6 +11,9 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@formkit/themes": "^1.6.8",
+    "@formkit/utils": "^1.6.8",
+    "@formkit/vue": "^1.6.8",
     "axios": "^1.7.7",
     "bootstrap": "4",
     "jquery": "^3.7.1",

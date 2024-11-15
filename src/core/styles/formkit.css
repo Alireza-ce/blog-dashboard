@@ -1,0 +1,25 @@
+.formkit-message.is-invalid {
+	color: var(--red);
+  margin-top: 4px;
+}
+
+.form-group[data-invalid="true"]{
+	color: var(--red);
+}
+
+.form-group[data-invalid="true"] .formkit-wrapper .formkit-inner .formkit-input{
+  border-color: var(--red);
+
+}
+
+.formkit-label.form-label{
+  margin-bottom: 4px;
+}
+
+.formkit-messages.list-unstyled{
+  display: none;
+}
+
+.form-group .formkit-messages.list-unstyled{
+  display: block;
+}

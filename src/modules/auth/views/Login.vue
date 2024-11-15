@@ -1,41 +1,19 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import AuthLayout from "../layout/AuthLayout.vue";
+import { AuthForm } from "../models/forms.model";
 
-const formData = reactive({
-  email: "",
-  password: "",
-});
 
-function onSubmit() {
+function onSubmit(data: AuthForm): void {
   // Handle register logic
-  console.log("Register with:", formData.email, formData.password);
+  console.log("Register with:", data);
 }
 </script>
 
 <template>
   <AuthLayout title="Login" button-label="Login" :onSubmit="onSubmit">
     <template #forms>
-      <div class="form-group">
-        <label for="emailField">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="emailField"
-          v-model="formData.email"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="passwordField">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="passwordField"
-          v-model="formData.password"
-          required
-        />
-      </div>
+      <FormKit name="email" label="Email" validation="required|email" />
+      <FormKit name="password" label="Password"  validation="required|length:6" />
     </template>
     <template #footer> Don’t have account? Register Now </template>
   </AuthLayout>
