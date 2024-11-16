@@ -1,10 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getUserApi } from "../services/api.ts";
+
+const { data } = getUserApi();
+</script>
 
 <template>
   <div class="dashboard-header">
     <div class="info">
       <p class="company">Arvan Challenge</p>
-      <p>Welcome user name</p>
+      <p v-if="data">Welcome {{ data.user.username }}</p>
     </div>
     <button class="btn btn-primary">logout button</button>
   </div>

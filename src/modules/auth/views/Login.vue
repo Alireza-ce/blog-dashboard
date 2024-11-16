@@ -2,11 +2,11 @@
 import AuthLayout from "../layout/AuthLayout.vue";
 import { LocalStorageKeys } from "../../../core/constants/auth";
 import { AuthForm } from "../models/forms.model";
-import { useLogin } from "../services";
+import { useLoginApi } from "../services/api";
 import { useNotication } from "../../../core/services/snackbar";
 import { useRouter } from "vue-router";
 
-const loginMutate = useLogin();
+const loginMutate = useLoginApi();
 const router = useRouter();
 const { onSuccessNotification, onErrorNotification } = useNotication();
 
@@ -24,7 +24,12 @@ async function onSubmit(data: AuthForm) {
 </script>
 
 <template>
-  <AuthLayout title="Login" button-label="Login" :onSubmit="onSubmit" :is-loading="loginMutate.isPending.value">
+  <AuthLayout
+    title="Login"
+    button-label="Login"
+    :onSubmit="onSubmit"
+    :is-loading="loginMutate.isPending.value"
+  >
     <template #forms>
       <FormKit name="email" label="Email" validation="required|email" />
       <FormKit

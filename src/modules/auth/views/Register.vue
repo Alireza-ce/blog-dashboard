@@ -3,13 +3,13 @@ import { LocalStorageKeys } from "../../../core/constants/auth";
 import { useNotication } from "../../../core/services/snackbar";
 import AuthLayout from "../layout/AuthLayout.vue";
 import { RegisterForm } from "../models/forms.model";
-import { useRegister } from "../services";
+import { useRegisterApi } from "../services/api";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const { onSuccessNotification, onErrorNotification } = useNotication();
 
-const registerMutate = useRegister();
+const registerMutate = useRegisterApi();
 
 async function onSubmit(data: RegisterForm) {
   try {
@@ -25,7 +25,12 @@ async function onSubmit(data: RegisterForm) {
 </script>
 
 <template>
-  <AuthLayout title="Register" button-label="Register" :is-loading="registerMutate.isPending.value" :onSubmit="onSubmit">
+  <AuthLayout
+    title="Register"
+    button-label="Register"
+    :is-loading="registerMutate.isPending.value"
+    :onSubmit="onSubmit"
+  >
     <template #forms>
       <FormKit name="username" label="User" validation="required" />
       <FormKit name="email" label="Email" validation="required|email" />
